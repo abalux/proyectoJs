@@ -12,7 +12,18 @@ productos.push(new Producto("Pantalón Nina", 5000, "Jean slouchy con roturas", 
 productos.push(new Producto("Sweater Suecia", 4000, "Sweater amplio con cuello de tortuga", "Verde esmeralda"));
 productos.push(new Producto("Falda Amapola", 4500,"Falda midi", "Estampado negro y blanco"));
 
-
+//DESAFÍO COMPLEMENTARIO DOM
+let deposito = document.querySelector(".containerProductos");
+deposito.className = "d-flex flex-row justify-content-around";
+for (Producto of productos) {
+    let contenedor = document.createElement("div");
+    contenedor.innerHTML =  `<h3>${Producto.nombre}</h3>
+                            <h4>Precio: $${Producto.precio}</h4>
+                            <p>Descripción: ${Producto.prenda}</p>
+                            <p>Color: ${Producto.color}</p> `;
+    deposito.appendChild(contenedor);
+}
+//
 
 let nombreCompleto = prompt("Este es el shop online de Dina's, por favor para mejor atención ingrese su nombre completo. Si quiere salir presione ESC.");
 while ((nombreCompleto == "") || (nombreCompleto == " ")){
