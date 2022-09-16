@@ -1,30 +1,42 @@
-class Producto {
-    constructor(nombre, precio, prenda, color) {
-        this.nombre = nombre;
-        this.precio = parseFloat(precio);
-        this.disponible = true;
-        this.prenda = prenda;
-        this.color = color;
-    }
-}
-const productos = [];
-productos.push(new Producto("Pantalón Nina", 5000, "Jean slouchy con roturas", "Celeste nevado"));
-productos.push(new Producto("Sweater Suecia", 4000, "Sweater amplio con cuello de tortuga", "Verde esmeralda"));
-productos.push(new Producto("Falda Amapola", 4500,"Falda midi", "Estampado negro y blanco"));
+let productos = [
+    {id:1, nombre:"Pantalón Nina", imagen:"https://images.pexels.com/photos/7588165/pexels-photo-7588165.jpeg?auto=compress&cs=tinysrgb&w=600", precio: 5000, disponible: true, prenda:"Jean slouchy con roturas", color:"Celeste nevado"},
+    {id:2, nombre:"Sweater Suecia", imagen:"https://images.pexels.com/photos/3626312/pexels-photo-3626312.jpeg?auto=compress&cs=tinysrgb&w=600", precio: 4000, disponible: true, prenda:"Sweater amplio con cuello de tortuga", color:"Verde esmeralda"},
+    {id:3, nombre:"Falda Amapola", imagen:"https://images.pexels.com/photos/12823102/pexels-photo-12823102.jpeg?auto=compress&cs=tinysrgb&w=600", precio: 4500, disponible: true, prenda:"Falda midi", color:"Estampado negro y blanco"},
+]
 
-//DESAFÍO COMPLEMENTARIO DOM
 let deposito = document.querySelector(".containerProductos");
 deposito.className = "d-flex flex-row justify-content-around";
-for (Producto of productos) {
+for (producto of productos){
     let contenedor = document.createElement("div");
-    contenedor.innerHTML =  `<h3>${Producto.nombre}</h3>
-                            <h4>Precio: $${Producto.precio}</h4>
-                            <p>Descripción: ${Producto.prenda}</p>
-                            <p>Color: ${Producto.color}</p> `;
+    contenedor.innerHTML = `<img src=${producto.imagen} style="width: 18rem;" alt="">
+                            <h3>${producto.nombre}</h3>
+                            <h4>Precio: $${producto.precio}</h4>
+                            <p>Descripción: ${producto.prenda}</p>
+                            <p>Color: ${producto.color}</p>
+                            <button id="${producto.id}" type="button">Agregar al carrito</button>`;
     deposito.appendChild(contenedor);
-}
-//
+} 
+let carritoCompra = [];
+let botonComprar = document.getElementById(`${producto.id}`);
 
+botonComprar.addEventListener(`click`, () => {
+    agregarAlCarrito();
+
+})
+function agregarAlCarrito() {
+    carritoCompra.push(`${producto.nombre}`);
+    console.log(carritoCompra);
+}
+
+
+
+
+
+
+
+
+
+//
 let nombreCompleto = prompt("Este es el shop online de Dina's, por favor para mejor atención ingrese su nombre completo. Si quiere salir presione ESC.");
 while ((nombreCompleto == "") || (nombreCompleto == " ")){
     alert("Estimado cliente, eso no es un nombre válido. Por favor ingrese su nombre.");
