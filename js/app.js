@@ -28,7 +28,14 @@ productos.forEach(producto => {
     const boton = document.getElementById(`agregar ${producto.id}`);
 
     boton.addEventListener("click", () => {
-        agregarAlCarrito(producto.id)
+        agregarAlCarrito(producto.id);
+        
+        Swal.fire({
+            icon : "success",
+            title : 'Has anadido una prenda al carrito',
+            timer : 3000,
+            showConfirmButton : false,
+        })
     })
 
 })
@@ -48,6 +55,8 @@ const agregarAlCarrito = (prodId) => {
     }
     actualizarCarrito();
     }
+
+
 
     const eliminarDelCarrito = (prodId) => { 
     const item = carritoDeCompras.find((prod) => prod.id === prodId);
