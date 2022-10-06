@@ -1,0 +1,5 @@
+[
+    {"id":1, "nombre":"Pantalón Nina", "imagen":"https://images.pexels.com/photos/7588165/pexels-photo-7588165.jpeg?auto=compress&cs=tinysrgb&w=600", "precio": 5000, "disponible": true, "prenda":"Jean slouchy con roturas", "color":"Celeste nevado", "cantidad" : 1},
+    {"id":2, "nombre":"Sweater Suecia", "imagen":"https://images.pexels.com/photos/3626312/pexels-photo-3626312.jpeg?auto=compress&cs=tinysrgb&w=600", "precio": 4000, "disponible": true, "prenda":"Sweater amplio con cuello de tortuga", "color":"Verde esmeralda", "cantidad" : 1},
+    {"id":3, "nombre":"Falda Amapola", "imagen":"https://images.pexels.com/photos/12823102/pexels-photo-12823102.jpeg?auto=compress&cs=tinysrgb&w=600", "precio": 4500, "disponible": true, "prenda":"Falda midi", "color":"Estampado negro y blanco", "cantidad" : 1}
+]

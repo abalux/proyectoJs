@@ -1,9 +1,9 @@
 //ARRAY DEL STOCK
-let productos = [
+/*let productos = [
     {id:1, nombre:"Pantalón Nina", imagen:"https://images.pexels.com/photos/7588165/pexels-photo-7588165.jpeg?auto=compress&cs=tinysrgb&w=600", precio: 5000, disponible: true, prenda:"Jean slouchy con roturas", color:"Celeste nevado", cantidad : 1},
     {id:2, nombre:"Sweater Suecia", imagen:"https://images.pexels.com/photos/3626312/pexels-photo-3626312.jpeg?auto=compress&cs=tinysrgb&w=600", precio: 4000, disponible: true, prenda:"Sweater amplio con cuello de tortuga", color:"Verde esmeralda", cantidad : 1},
     {id:3, nombre:"Falda Amapola", imagen:"https://images.pexels.com/photos/12823102/pexels-photo-12823102.jpeg?auto=compress&cs=tinysrgb&w=600", precio: 4500, disponible: true, prenda:"Falda midi", color:"Estampado negro y blanco", cantidad : 1},
-]
+]*/
 //ARRAY DEL CARRITO
 let carritoDeCompras = [];
 
@@ -16,7 +16,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
 let containerProductos = document.getElementById("containerProductos");
 containerProductos.className = "d-flex flex-row justify-content-around";
-productos.forEach(producto => {
+
+fetch("productos.json")
+    .then((resp)=>resp.json())
+    .then((productos)=>{
+        productos.forEach((producto)=>{
+            let container = document.createElement("div");
+    container.innerHTML = `
+    <img src="${producto.imagen}" style="width: 18rem;">
+    <h3>${producto.nombre}</h3>
+    <p>$ ${producto.precio}</p>
+    <button id="agregar ${producto.id}">Agregar al carrito</button> `;
+    containerProductos.appendChild(container);
+
+    const boton = document.getElementById(`agregar ${producto.id}`);
+
+    boton.addEventListener("click", () => {
+        agregarAlCarrito(producto.id);
+        
+        Swal.fire({
+            icon : "success",
+            title : 'Has anadido una prenda al carrito',
+            timer : 3000,
+            showConfirmButton : false,
+        })
+    })
+})
+    })
+
+/*productos.forEach(producto => {
     let container = document.createElement("div");
     container.innerHTML = `
     <img src="${producto.imagen}" style="width: 18rem;">
@@ -39,6 +67,8 @@ productos.forEach(producto => {
     })
 
 })
+
+*/
 
 const agregarAlCarrito = (prodId) => {
     const yaEstaEnCarrito = carritoDeCompras.some((prod) => prod.id === prodId);
