@@ -17,11 +17,12 @@ document.addEventListener("DOMContentLoaded", () => {
 let containerProductos = document.getElementById("containerProductos");
 containerProductos.className = "d-flex flex-row justify-content-around";
 
-/*fetch("productos.json")
+fetch("productos.json")
     .then((resp)=>resp.json())
     .then((productos)=>{
         productos.forEach((producto)=>{
             let container = document.createElement("div");
+            container.classList = "pe-2 ps-2 pb-5 pt-2";
     container.innerHTML = `
     <img src="${producto.imagen}" style="width: 18rem;">
     <h3>${producto.nombre}</h3>
@@ -43,72 +44,48 @@ containerProductos.className = "d-flex flex-row justify-content-around";
     })
 })
     })
-*/
-productos.forEach(producto => {
-    let container = document.createElement("div");
-    container.innerHTML = `
-    <img src="${producto.imagen}" style="width: 18rem;">
-    <h3>${producto.nombre}</h3>
-    <p>$ ${producto.precio}</p>
-    <button id="agregar ${producto.id}">Agregar al carrito</button> `;
-    containerProductos.appendChild(container);
-
-    const boton = document.getElementById(`agregar ${producto.id}`);
-
-    boton.addEventListener("click", () => {
-        agregarAlCarrito(producto.id);
-        
-        Swal.fire({
-            icon : "success",
-            title : 'Has anadido una prenda al carrito',
-            timer : 3000,
-            showConfirmButton : false,
-        })
-    })
-
-})
 
 let containerFiltros = document.getElementById("containerFiltros");
 
 let sinFiltro = document.createElement("div");
 sinFiltro.innerHTML = `
-<button id="noFiltro">Sin Filtro</button>
+<button class="mt-2 mb-2 filterBtn" id="noFiltro">Sin Filtro</button>
 `;
 containerFiltros.appendChild(sinFiltro);
 
 let filtro1 = document.createElement("div");
 filtro1.innerHTML = `
-<button id="filtroPantalones">Pantalones</button>
+<button class="mb-1 mt-1 filterBtn" id="filtroPantalones">Pantalones</button>
 `;
 containerFiltros.appendChild(filtro1);
 
 let filtro2 = document.createElement("div");
 filtro2.innerHTML = `
-<button id="filtroSweater">Sweaters</button>
+<button class="mb-1 mt-1 filterBtn" id="filtroSweater">Sweaters</button>
 `;
 containerFiltros.appendChild(filtro2);
 
 let filtro3 = document.createElement("div");
 filtro3.innerHTML = `
-<button id="filtroFaldas">Faldas</button>
+<button class="mb-1 mt-1 filterBtn" id="filtroFaldas">Faldas</button>
 `;
 containerFiltros.appendChild(filtro3);
 
 let filtro4 = document.createElement("div");
 filtro4.innerHTML = `
-<button id="filtroNegro">Color negro</button>
+<button class="mt-1 mb-1 filterBtn" id="filtroNegro">Color negro</button>
 `;
 containerFiltros.appendChild(filtro4);
 
 let filtro5 = document.createElement("div");
 filtro5.innerHTML = `
-<button id="filtroVerde">Color verde</button>
+<button class="mt-1 mb-1 filterBtn" id="filtroVerde">Color verde</button>
 `;
 containerFiltros.appendChild(filtro5);
 
 let filtro6 = document.createElement("div");
 filtro6.innerHTML = `
-<button id="filtroCeleste">Color celeste</button>
+<button class="mt-1 mb-1 filterBtn" id="filtroCeleste">Color celeste</button>
 `;
 containerFiltros.appendChild(filtro6);
 
@@ -117,6 +94,7 @@ noFiltro.addEventListener("click", () => {
     containerProductos.innerHTML = "";
     productos.forEach(producto => {
         let container = document.createElement("div");
+        container.classList = "pe-2 ps-2 pb-5 pt-2";
         container.innerHTML = `
         <img src="${producto.imagen}" style="width: 18rem;">
         <h3>${producto.nombre}</h3>
@@ -147,6 +125,7 @@ boton1.addEventListener("click", () => {
     containerProductos.innerHTML = "";
     pantalones.forEach(producto => {
         let container = document.createElement("div");
+        container.classList = "pb-5 pt-2";
         container.innerHTML = `
         <img src="${producto.imagen}" style="width: 18rem;">
         <h3>${producto.nombre}</h3>
@@ -177,6 +156,7 @@ boton2.addEventListener("click", () => {
     containerProductos.innerHTML = "";
     sweater.forEach(producto => {
         let container = document.createElement("div");
+        container.classList = "pb-5 pt-2";
         container.innerHTML = `
         <img src="${producto.imagen}" style="width: 18rem;">
         <h3>${producto.nombre}</h3>
@@ -207,6 +187,7 @@ boton3.addEventListener("click", () => {
     containerProductos.innerHTML = "";
     faldas.forEach(producto => {
         let container = document.createElement("div");
+        container.classList = "pb-5 pt-2";
         container.innerHTML = `
         <img src="${producto.imagen}" style="width: 18rem;">
         <h3>${producto.nombre}</h3>
@@ -237,6 +218,7 @@ boton4.addEventListener("click", () => {
     containerProductos.innerHTML = "";
     negro.forEach(producto => {
         let container = document.createElement("div");
+        container.classList = "pb-5 pt-2";
         container.innerHTML = `
         <img src="${producto.imagen}" style="width: 18rem;">
         <h3>${producto.nombre}</h3>
@@ -267,6 +249,7 @@ boton5.addEventListener("click", () => {
     containerProductos.innerHTML = "";
     verde.forEach(producto => {
         let container = document.createElement("div");
+        container.classList = "pb-5 pt-2";
         container.innerHTML = `
         <img src="${producto.imagen}" style="width: 18rem;">
         <h3>${producto.nombre}</h3>
@@ -297,6 +280,7 @@ boton6.addEventListener("click", () => {
     containerProductos.innerHTML = "";
     celeste.forEach(producto => {
         let container = document.createElement("div");
+        container.classList = "pb-5 pt-2";
         container.innerHTML = `
         <img src="${producto.imagen}" style="width: 18rem;">
         <h3>${producto.nombre}</h3>
@@ -390,4 +374,112 @@ vaciarCarrito.addEventListener("click", () => {
 //repetido
 let total = carritoDeCompras.reduce((acc, prod) => acc + prod.precio * prod.cantidad, 0);
 
+
+//formulario
+const formulario = document.getElementById('formulario');
+const inputs = document.querySelectorAll('#formulario input');
+
+const expresiones = {
+	usuario: /^[a-zA-Z0-9\_\-]{4,16}$/, // Letras, numeros, guion y guion_bajo
+	nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
+	password: /^.{4,12}$/, // 4 a 12 digitos.
+	correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+	telefono: /^\d{7,14}$/ // 7 a 14 numeros.
+}
+
+const campos = {
+	usuario: false,
+	nombre: false,
+	password: false,
+	correo: false,
+	telefono: false
+}
+
+const validarFormulario = (e) => {
+	switch (e.target.name) {
+		case "usuario":
+			validarCampo(expresiones.usuario, e.target, 'usuario');
+		break;
+		case "nombre":
+			validarCampo(expresiones.nombre, e.target, 'nombre');
+		break;
+		case "password":
+			validarCampo(expresiones.password, e.target, 'password');
+			validarPassword2();
+		break;
+		case "password2":
+			validarPassword2();
+		break;
+		case "correo":
+			validarCampo(expresiones.correo, e.target, 'correo');
+		break;
+		case "telefono":
+			validarCampo(expresiones.telefono, e.target, 'telefono');
+		break;
+	}
+}
+
+const validarCampo = (expresion, input, campo) => {
+	if(expresion.test(input.value)){
+		document.getElementById(`${campo}Grupo`).classList.remove('formularioGrupo-incorrecto');
+		document.getElementById(`${campo}Grupo`).classList.add('formularioGrupo-correcto');
+		document.querySelector(`#${campo}Grupo i`).classList.add('fa-check-circle');
+		document.querySelector(`#${campo}Grupo i`).classList.remove('fa-times-circle');
+		document.querySelector(`#${campo}Grupo .formularioInput-error`).classList.remove('formularioInput-error-activo');
+		campos[campo] = true;
+	} else {
+		document.getElementById(`${campo}Grupo`).classList.add('formularioGrupo-incorrecto');
+		document.getElementById(`${campo}Grupo`).classList.remove('formularioGrupo-correcto');
+		document.querySelector(`#${campo}Grupo i`).classList.add('fa-times-circle');
+		document.querySelector(`#${campo}Grupo i`).classList.remove('fa-check-circle');
+		document.querySelector(`#${campo}Grupo .formularioInput-error`).classList.add('formularioInput-error-activo');
+		campos[campo] = false;
+	}
+}
+
+const validarPassword2 = () => {
+	const inputPassword1 = document.getElementById('password');
+	const inputPassword2 = document.getElementById('password2');
+
+	if(inputPassword1.value !== inputPassword2.value){
+		document.getElementById(`password2Grupo`).classList.add('formularioGrupo-incorrecto');
+		document.getElementById(`password2Grupo`).classList.remove('formularioGrupo-correcto');
+		document.querySelector(`#password2Grupo i`).classList.add('fa-times-circle');
+		document.querySelector(`#password2Grupo i`).classList.remove('fa-check-circle');
+		document.querySelector(`#password2Grupo .formularioInput-error`).classList.add('formularioInput-error-activo');
+		campos['password'] = false;
+	} else {
+		document.getElementById(`password2Grupo`).classList.remove('formularioGrupo-incorrecto');
+		document.getElementById(`password2Grupo`).classList.add('formularioGrupo-correcto');
+		document.querySelector(`#password2Grupo i`).classList.remove('fa-times-circle');
+		document.querySelector(`#password2Grupo i`).classList.add('fa-check-circle');
+		document.querySelector(`#password2Grupo .formularioInput-error`).classList.remove('formularioInput-error-activo');
+		campos['password'] = true;
+	}
+}
+
+inputs.forEach((input) => {
+	input.addEventListener('keyup', validarFormulario);
+	input.addEventListener('blur', validarFormulario);
+});
+
+formulario.addEventListener('submit', (e) => {
+	e.preventDefault();
+
+	const terminos = document.getElementById('terminos');
+	if(campos.usuario && campos.nombre && campos.password && campos.correo && campos.telefono && terminos.checked ){
+		formulario.reset();
+
+		document.getElementById('formularioMensaje-exito').classList.add('formularioMensaje-exito-activo');
+		setTimeout(() => {
+			document.getElementById('formularioMensaje-exito').classList.remove('formularioMensaje-exito-activo');
+		}, 5000);
+
+		document.querySelectorAll('.formularioGrupo-correcto').forEach((icono) => {
+			icono.classList.remove('formularioGrupo-correcto');
+		});
+	} else {
+		document.getElementById('formularioMensaje').classList.add('formularioMensaje-activo');
+	}
+});
 

@@ -17,14 +17,6 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
                 <a class="navbar-brand" href="#">Dina's</a>
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Productos</a>
-                    </li>
-                </ul>
                 <button type="button" id="carritoCompras" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     🛒
                 </button>
@@ -78,8 +70,85 @@
         </button>
     </div>
     <h2 class="text-center mt-3 mb-3">Productos</h2>
-    <div id="containerProductos"></div>
-    <div id="containerFiltros"></div>
+    <div class="d-flex flex-row justify-content-around">
+        <div id="containerProductos"></div>
+        <div id="containerFiltros"></div>
+    </div>
+    
+    <div class="container formFondo pb-2">
+        <h2>Subscribite a nuestro newsletter! Podes tener hasta descuentos sorpresa en compras</h2>
+        <form action="" class="formulario" id="formulario">
+			<div class="formularioGrupo" id="usuarioGrupo">
+				<label for="usuario" class="formularioLabel">Usuario</label>
+				<div class="formularioGrupo-input">
+					<input type="text" class="formularioInput" name="usuario" id="usuario" placeholder="john123">
+					<i class="formularioValidacion-estado fas fa-times-circle"></i>
+				</div>
+				<p class="formularioInput-error">El usuario tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p>
+			</div>
+
+			<div class="formularioGrupo" id="nombreGrupo">
+				<label for="nombre" class="formularioLabel">Nombre</label>
+				<div class="formularioGrupo-input">
+					<input type="text" class="formularioInput" name="nombre" id="nombre" placeholder="John Doe">
+					<i class="formularioValidacion-estado fas fa-times-circle"></i>
+				</div>
+				<p class="formularioInput-error">El usuario tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p>
+			</div>
+
+			<div class="formularioGrupo" id="passwordGrupo">
+				<label for="password" class="formularioLabel">Contraseña</label>
+				<div class="formularioGrupo-input">
+					<input type="password" class="formularioInput" name="password" id="password">
+					<i class="formularioValidacion-estado fas fa-times-circle"></i>
+				</div>
+				<p class="formularioInput-error">La contraseña tiene que ser de 4 a 12 dígitos.</p>
+			</div>
+
+			<div class="formularioGrupo" id="password2Grupo">
+				<label for="password2" class="formularioLabel">Repetir Contraseña</label>
+				<div class="formularioGrupo-input">
+					<input type="password" class="formularioInput" name="password2" id="password2">
+					<i class="formularioValidacion-estado fas fa-times-circle"></i>
+				</div>
+				<p class="formularioInput-error">Ambas contraseñas deben ser iguales.</p>
+			</div>
+
+			<div class="formularioGrupo" id="correoGrupo">
+				<label for="correo" class="formularioLabel">Correo Electrónico</label>
+				<div class="formularioGrupo-input">
+					<input type="email" class="formularioInput" name="correo" id="correo" placeholder="correo@correo.com">
+					<i class="formularioValidacion-estado fas fa-times-circle"></i>
+				</div>
+				<p class="formularioInput-error">El correo solo puede contener letras, numeros, puntos, guiones y guion bajo.</p>
+			</div>
+
+			<div class="formularioGrupo" id="telefonoGrupo">
+				<label for="telefono" class="formularioLabel">Teléfono</label>
+				<div class="formularioGrupo-input">
+					<input type="text" class="formularioInput" name="telefono" id="telefono" placeholder="4491234567">
+					<i class="formularioValidacion-estado fas fa-times-circle"></i>
+				</div>
+				<p class="formularioInput-error">El telefono solo puede contener numeros y el maximo son 14 dígitos.</p>
+			</div>
+
+			<div class="formularioGrupo" id="terminosGrupo">
+				<label class="formularioLabel">
+					<input class="formularioCheckbox" type="checkbox" name="terminos" id="terminos">
+					Acepto los Terminos y Condiciones
+				</label>
+			</div>
+
+			<div class="formularioMensaje" id="formularioMensaje">
+				<p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por favor rellena el formulario correctamente. </p>
+			</div>
+
+			<div class="formularioGrupo formularioGrupo-btn-enviar">
+				<button type="submit" class="formularioBtn">Enviar</button>
+				<p class="formularioMensaje-exito" id="formularioMensaje-exito">Formulario enviado exitosamente!</p>
+			</div>
+		</form>
+    </div>
     <div class="container">
         <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
             <div class="col-md-4 d-flex align-items-center ">
@@ -97,9 +166,10 @@
                 </li>
             </ul>
         </footer>
-    </div>
+    </div>   
+    <script src="./js/app.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="./js/app.js"></script>
+    <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
 </body>
 </html>

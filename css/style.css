@@ -1,0 +1,149 @@
+main {
+	max-width: 800px;
+	width: 90%;
+	margin: auto;
+	padding: 40px;
+}
+
+.formulario {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 20px;
+}
+
+.formFondo {
+    background-color: #eb8484;
+}
+
+.formularioLabel {
+	display: block;
+	font-weight: 700;
+	padding: 10px;
+	cursor: pointer;
+}
+
+.formularioGrupo-input {
+	position: relative;
+}
+
+.formularioInput {
+	width: 100%;
+	background: #fff;
+	border: 3px solid transparent;
+	border-radius: 3px;
+	height: 45px;
+	line-height: 45px;
+	padding: 0 40px 0 10px;
+	transition: .3s ease all;
+}
+
+.formularioInput:focus {
+	border: 3px solid #0075FF;
+	outline: none;
+	box-shadow: 3px 0px 30px rgba(163,163,163, 0.4);
+}
+
+.formularioInput-error {
+	font-size: 12px;
+	margin-bottom: 0;
+	display: none;
+}
+
+.formularioInput-error-activo {
+	display: block;
+}
+
+.formularioValidacion-estado {
+	position: absolute;
+	right: 10px;
+	bottom: 15px;
+	z-index: 100;
+	font-size: 16px;
+	opacity: 0;
+}
+
+.formularioCheckbox {
+	margin-right: 10px;
+}
+
+.formularioGrupo-terminos, 
+.formularioMensaje,
+.formularioGrupo-btn-enviar {
+	grid-column: span 2;
+}
+
+.formularioMensaje {
+	height: 45px;
+	line-height: 45px;
+	background: #F66060;
+	padding: 0 15px;
+	border-radius: 3px;
+	display: none;
+}
+
+.formularioMensaje-activo {
+	display: block;
+}
+
+.formularioMensaje p {
+	margin: 0;
+}
+
+.formularioGrupo-btn-enviar {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.formularioBtn {
+	height: 45px;
+	line-height: 45px;
+	width: 30%;
+	background: #000;
+	color: #fff;
+	font-weight: bold;
+	border: none;
+	border-radius: 3px;
+	cursor: pointer;
+	transition: .1s ease all;
+}
+
+.formularioBtn:hover {
+	box-shadow: 3px 0px 30px rgba(163,163,163, 1);
+}
+
+.formularioMensaje-exito {
+	font-size: 14px;
+	color: #119200;
+	display: none;
+}
+
+.formularioMensaje-exito-activo {
+	display: block;
+}
+
+.formularioGrupo-correcto .formularioValidacion-estado {
+	color: #1ed12d;
+	opacity: 1;
+}
+
+.formularioGrupo-incorrecto .formularioLabel {
+	color: #bb2929;
+}
+
+.formularioGrupo-incorrecto .formularioValidacion-estado {
+	color: #bb2929;
+	opacity: 1;
+}
+
+.formularioGrupo-incorrecto .formularioInput {
+	border: 3px solid #bb2929;
+}
+
+.filterBtn {
+    background-color: #f8965d;
+    border-color: #fa892d;
+    color: #000;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
